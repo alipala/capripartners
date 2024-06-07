@@ -1,5 +1,6 @@
 Feature: Collection API
 
+  @smoke
   Scenario: Search artworks with valid query
     Given I have a valid API key
     When I send a GET request to "/collection?q=rembrandt"

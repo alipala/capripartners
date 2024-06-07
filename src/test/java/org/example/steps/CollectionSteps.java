@@ -1,10 +1,10 @@
 package org.example.steps;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
-
-import static org.hamcrest.Matchers.*;
 
 public class CollectionSteps {
 
@@ -22,6 +22,7 @@ public class CollectionSteps {
 
     @Then("the response should contain artworks")
     public void the_response_should_contain_artworks() {
-        commonSteps.getResponse().then().body("artObjects", not(empty()));
-    }
+        Response response = commonSteps.getResponse();
+        boolean hasArtworks = response.jsonPath().getList("artObjects").size() > 0;
+        assertThat(hasArtworks).isTrue();    }
 }

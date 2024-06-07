@@ -1,10 +1,10 @@
 package org.example.steps;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
-
-import static org.hamcrest.CoreMatchers.equalTo;
 
 public class ArtObjectSteps {
 
@@ -23,9 +23,11 @@ public class ArtObjectSteps {
     @Then("the response should contain the title {string}")
     public void the_response_should_contain_the_title(String title) {
         Response response = commonSteps.getResponse();
-        response
-                .then()
-                .body("artObject.title", equalTo(title));
+        String actualTitle = response.path("artObject.title");
+        assertThat(actualTitle).
+                isNotNull().
+                as("Checking title").
+                isEqualTo(title);
 
     }
 }

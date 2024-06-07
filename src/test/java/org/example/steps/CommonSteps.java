@@ -1,12 +1,12 @@
 package org.example.steps;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
 import io.restassured.response.Response;
 import org.example.steps.utils.ApiTestHelper;
-
-import static org.hamcrest.Matchers.*;
 
 public class CommonSteps {
 
@@ -30,12 +30,11 @@ public class CommonSteps {
     @When("I send a GET request to {string}")
     public void i_send_a_get_request_to(String endpoint) {
         response = apiTestHelper.sendGetRequest(endpoint);
-        this.response = response;
     }
 
     @Then("the response status code should be {int}")
     public void the_response_status_code_should_be(int statusCode) {
-        response.then().statusCode(statusCode);
+        assertThat(response.statusCode()).isEqualTo(statusCode);
     }
 
     public ApiTestHelper getApiTestHelper() {
