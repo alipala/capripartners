@@ -3,7 +3,6 @@ package org.example.steps;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
-import io.cucumber.picocontainer.*;
 import io.restassured.response.Response;
 import org.example.steps.utils.ApiTestHelper;
 
@@ -15,12 +14,12 @@ public class CommonSteps {
     private Response response;
 
     public CommonSteps() {
-        this.apiTestHelper = new ApiTestHelper("");
+        this.apiTestHelper = new ApiTestHelper("jw4VW7dk");
     }
 
     @Given("I have a valid API key")
     public void i_have_a_valid_api_key() {
-        apiTestHelper.setApiKey("");
+        apiTestHelper.setApiKey("jw4VW7dk");
     }
 
     @Given("I have an invalid API key")

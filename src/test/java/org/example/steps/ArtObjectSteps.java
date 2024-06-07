@@ -1,10 +1,8 @@
 package org.example.steps;
 
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
-import org.example.steps.utils.ApiTestHelper;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 
@@ -24,6 +22,10 @@ public class ArtObjectSteps {
 
     @Then("the response should contain the title {string}")
     public void the_response_should_contain_the_title(String title) {
-        commonSteps.getResponse().then().body("artObjects[0].title", equalTo(title));
+        Response response = commonSteps.getResponse();
+        response
+                .then()
+                .body("artObject.title", equalTo(title));
+
     }
 }

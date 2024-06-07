@@ -8,6 +8,8 @@ import static io.restassured.config.LogConfig.logConfig;
 public class ApiTestHelper {
 
     private String apiKey;
+    private final String BASE_URL = "https://www.rijksmuseum.nl/api/en";
+
 
     public ApiTestHelper(String apiKey) {
         this.apiKey = apiKey;
@@ -23,7 +25,7 @@ public class ApiTestHelper {
                 .queryParam("key", apiKey)
                 .log().all()
                 .when()
-                .get("https://www.rijksmuseum.nl" + endpoint)
+                .get(BASE_URL + endpoint)
                 .then()
                 .log().all()
                 .extract()
@@ -39,7 +41,7 @@ public class ApiTestHelper {
                 .queryParam("ps", ps)
                 .log().all()
                 .when()
-                .get("https://www.rijksmuseum.nl" + endpoint)
+                .get(BASE_URL + endpoint)
                 .then()
                 .log().all()
                 .extract()
@@ -53,7 +55,7 @@ public class ApiTestHelper {
                 .queryParam("imgonly", imgonly)
                 .log().all()
                 .when()
-                .get("https://www.rijksmuseum.nl" + endpoint + "/" + id)
+                .get(BASE_URL + endpoint + "/" + id)
                 .then()
                 .log().all()
                 .extract()

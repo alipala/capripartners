@@ -1,10 +1,8 @@
 package org.example.steps;
 
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
-import org.example.steps.utils.ApiTestHelper;
 
 import static org.hamcrest.Matchers.*;
 
