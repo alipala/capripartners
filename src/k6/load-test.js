@@ -26,7 +26,7 @@ export let options = {
 const myTrend = new Trend('response_time');
 
 export default function () {
-    const apiKey = 'YOUR_API_KEY';
+    const apiKey = '';
     const res = http.get(`${BASE_URL}?key=${apiKey}&q=rembrandt`);
 
     check(res, {
